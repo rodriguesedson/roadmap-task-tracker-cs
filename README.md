@@ -3,7 +3,8 @@ Task Tracker CLI project for [roadmap.sh](https://roadmap.sh/projects/task-track
 
 ## How to run
 - Install [.NET](https://learn.microsoft.com/en-us/dotnet/core/install/windows#choose-the-correct-runtime)
-- run on terminal: `dotnet Program.cs`
+- Install dotnet-script: `dotnet tool install -g dotnet-script`
+- Run on terminal (at the file's directory): `dotnet-script Program.csx`
 
 ## Commands
 
