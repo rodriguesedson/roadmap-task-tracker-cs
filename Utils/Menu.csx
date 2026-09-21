@@ -1,11 +1,19 @@
-public static class Menu
+#load "../Services/TaskService.csx"
+
+public class Menu
 {
-    public static void HandleCommand(string command)
+    private readonly TaskService _taskService;
+
+    public Menu() {
+        _taskService = new TaskService();
+    }
+
+    public void HandleCommand(string command, string input)
     {
         switch (command)
         {
             case "add":
-                Console.WriteLine("Work in progress");
+                _taskService.Add(input);
                 break;
             case "update":
                 Console.WriteLine("Work in progress");

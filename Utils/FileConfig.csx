@@ -5,7 +5,7 @@ public static class FileConfig
         var directoryName = "Data";
         if (!Directory.Exists(directoryName) || !File.Exists(dataFilePath))
         {
-            var initialData = "{}";
+            var initialData = "[]";
             Directory.CreateDirectory(directoryName);
             File.WriteAllText(dataFilePath, initialData);
         }

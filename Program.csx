@@ -6,6 +6,8 @@ var runApp = true;
 
 FileConfig.StartConfig();
 
+var menu = new Menu();
+
 do
 {
     Console.ForegroundColor = ConsoleColor.DarkMagenta;
@@ -24,7 +26,7 @@ do
             runApp = false;
             break;
         default:
-            Menu.HandleCommand(command);
+            menu.HandleCommand(command, input);
             break;
     }
 } while (runApp);
