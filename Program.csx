@@ -1,7 +1,12 @@
 #load "Utils/InputHandler.csx"
 #load "Utils/Menu.csx"
+#load "Utils/FileConfig.csx"
 
 var runApp = true;
+
+FileConfig.StartConfig();
+
+var menu = new Menu();
 
 do
 {
@@ -21,7 +26,7 @@ do
             runApp = false;
             break;
         default:
-            Menu.HandleCommand(command);
+            menu.HandleCommand(command, input);
             break;
     }
 } while (runApp);

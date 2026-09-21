@@ -17,4 +17,22 @@ public static class InputHandler
 
         return command;
     }
+
+    public static int GetId(string input)
+    {
+        var id = input.Split(" ")[1];
+        if (!int.TryParse(id, out _))
+            throw new Exception("Invalid id");
+        else
+            return int.Parse(id);
+    }
+
+    public static string GetDescription(string input)
+    {
+        var description = input.Split(" ");
+        if (description.Count() == 1 || description.Count() == 2 && int.TryParse(description[1], out _))
+            throw new Exception("Invalid task description");
+        else
+            return string.Join(" ", description[1..]);
+    }
 }
