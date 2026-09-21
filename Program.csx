@@ -1,7 +1,10 @@
 #load "Utils/InputHandler.csx"
 #load "Utils/Menu.csx"
+#load "Utils/FileConfig.csx"
 
 var runApp = true;
+
+FileConfig.StartConfig();
 
 do
 {
