@@ -1,25 +1,65 @@
 #load "../Repositories/TaskRepository.csx"
 #load "../Utils/InputHandler.csx"
+#load "../Entities/DataRegistry.csx"
 
 public class TaskService
 {
-    private readonly Repository _repository;
+    private readonly TaskRepository _repository;
     public TaskService()
     {
-        _repository = new Repository();
+        _repository = new TaskRepository();
     }
 
     public void Add(string input)
     {
         try
         {
-            var description = InputHandler.GetDescription(input);
-            var tasksList = _repository.ListTasks();
-            var newId = tasksList.Count + 1;
+            var description = InputHandler.GetAddDescription(input);
+            var data = _repository.GetData();
+            var taskList = data.TaskList;
+            var newId = data.TaskCount + 1;
             var newTask = new Task(newId, description, Status.TODO, DateTime.Now, DateTime.Now);
+            taskList.Add(newTask);
+            data.TaskCount += 1;
 
-            _repository.SaveTask(newTask);
+            _repository.SaveData(data);
         } 
+        catch (Exception exception)
+        {
+            Console.WriteLine(exception.Message);
+        }
+    }
+
+    public void Update(string input)
+    {
+        try
+        {
+            var (id, description) = InputHandler.GetIdAndDescription(input);
+            var data = _repository.GetData();
+            var taskList = data.TaskList;
+            var task = taskList.FirstOrDefault(t => t.Id == id) ?? throw new Exception("Task not found");
+            task.Description = description;
+            task.UpdatedAt = DateTime.Now;
+            _repository.SaveData(data);
+        }
+        catch (Exception exception)
+        {
+            Console.WriteLine(exception.Message);
+        }
+    }
+
+    public void Delete(string input)
+    {
+        try
+        {
+            var id = InputHandler.GetId(input);
+            var data = _repository.GetData();
+            var taskList = data.TaskList;
+            var taskIndex = taskList.FindIndex(t => t.Id == id);
+            if (taskIndex == -1) throw new Exception("Task not found");
+            taskList.RemoveAt(taskIndex);
+            _repository.SaveData(data);
+        }
         catch (Exception exception)
         {
             Console.WriteLine(exception.Message);

@@ -16,10 +16,10 @@ public class Menu
                 _taskService.Add(input);
                 break;
             case "update":
-                Console.WriteLine("Work in progress");
+                _taskService.Update(input);
                 break;
             case "delete":
-                Console.WriteLine("Work in progress");
+                _taskService.Delete(input);
                 break;
             case "mark-in-progress":
                 Console.WriteLine("Work in progress");
