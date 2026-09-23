@@ -22,6 +22,18 @@ public class Repository
         File.WriteAllText(FilePath, data);
     }
 
+    public void UpdateTask(List<Task> tasksList)
+    {
+        var jsonOptions = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+        };
+
+        var data = JsonSerializer.Serialize(tasksList, jsonOptions);
+        File.WriteAllText(FilePath, data);
+    }
+
     public List<Task> ListTasks()
     {
         var data = File.ReadAllText(FilePath);

@@ -13,10 +13,10 @@ Task Tracker CLI project for [roadmap.sh](https://roadmap.sh/projects/task-track
 - exit ✅
 
 ### 2 Adding a new task
-- add "Complete project" ❌
+- add "Complete project" ✅
 
 ### 3 Updating and deleting tasks
-- update 1 "Complete task management project" ❌
+- update 1 "Complete task management project" ✅
 - delete 1 ❌
 
 ### 4 Marking a task as in progress or done
