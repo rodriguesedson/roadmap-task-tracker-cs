@@ -17,7 +17,7 @@ Task Tracker CLI project for [roadmap.sh](https://roadmap.sh/projects/task-track
 
 ### 3 Updating and deleting tasks
 - update 1 "Complete task management project" ✅
-- delete 1 ❌
+- delete 1 ✅
 
 ### 4 Marking a task as in progress or done
 - mark-in-progress 1 ❌

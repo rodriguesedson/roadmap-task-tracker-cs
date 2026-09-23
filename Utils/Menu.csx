@@ -19,7 +19,7 @@ public class Menu
                 _taskService.Update(input);
                 break;
             case "delete":
-                Console.WriteLine("Work in progress");
+                _taskService.Delete(input);
                 break;
             case "mark-in-progress":
                 Console.WriteLine("Work in progress");

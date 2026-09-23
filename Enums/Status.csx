@@ -7,5 +7,7 @@ public enum Status
     [JsonPropertyName("in-progress")]
     IN_PROGRESS,
     [JsonPropertyName("done")]
-    DONE
+    DONE,
+    [JsonPropertyName("deleted")]
+    DELETED
 }
