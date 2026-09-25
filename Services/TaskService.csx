@@ -35,9 +35,7 @@ public class TaskService
         try
         {
             var (id, description) = InputHandler.GetIdAndDescription(input);
-            var data = _repository.GetData();
-            var taskList = data.TaskList;
-            var task = taskList.FirstOrDefault(t => t.Id == id) ?? throw new Exception("Task not found");
+            var (data, task) = FindTask(input);
             task.Description = description;
             task.UpdatedAt = DateTime.Now;
             _repository.SaveData(data);
@@ -52,12 +50,9 @@ public class TaskService
     {
         try
         {
-            var id = InputHandler.GetId(input);
-            var data = _repository.GetData();
-            var taskList = data.TaskList;
-            var taskIndex = taskList.FindIndex(t => t.Id == id);
-            if (taskIndex == -1) throw new Exception("Task not found");
-            taskList.RemoveAt(taskIndex);
+            var (data, task) = FindTask(input);
+            var taskIndex = data.TaskList.IndexOf(task);
+            data.TaskList.RemoveAt(taskIndex);
             _repository.SaveData(data);
         }
         catch (Exception exception)
@@ -70,10 +65,6 @@ public class TaskService
     {
         try
         {
-            // var id = InputHandler.GetId(input);
-            // var data = _repository.GetData();
-            // var taskList = data.TaskList;
-            // var task = taskList.FirstOrDefault(t => t.Id == id) ?? throw new Exception("Task not found");
             var (data, task) = FindTask(input);
             task.Status = Status.IN_PROGRESS;
             _repository.SaveData(data);
