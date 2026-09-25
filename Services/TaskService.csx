@@ -65,4 +65,31 @@ public class TaskService
             Console.WriteLine(exception.Message);
         }
     }
+
+    public void MarkInProgress(string input)
+    {
+        try
+        {
+            // var id = InputHandler.GetId(input);
+            // var data = _repository.GetData();
+            // var taskList = data.TaskList;
+            // var task = taskList.FirstOrDefault(t => t.Id == id) ?? throw new Exception("Task not found");
+            var (data, task) = FindTask(input);
+            task.Status = Status.IN_PROGRESS;
+            _repository.SaveData(data);
+        }
+        catch (Exception exception)
+        {
+            Console.WriteLine(exception.Message);
+        }
+    }
+
+    private (DataRegistry, Task) FindTask(string input)
+    {
+        var id = InputHandler.GetId(input);
+        var data = _repository.GetData();
+        var taskList = data.TaskList;
+        var task = taskList.FirstOrDefault(t => t.Id == id) ?? throw new Exception("Task not found");
+        return (data, task);
+    }
 }
