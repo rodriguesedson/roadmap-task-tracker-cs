@@ -75,6 +75,20 @@ public class TaskService
         }
     }
 
+    public void MarkDone(string input)
+    {
+        try
+        {
+            var (data, task) = FindTask(input);
+            task.Status = Status.DONE;
+            _repository.SaveData(data);
+        }
+        catch (Exception exception)
+        {
+            Console.WriteLine(exception.Message);
+        }
+    }
+
     private (DataRegistry, Task) FindTask(string input)
     {
         var id = InputHandler.GetId(input);

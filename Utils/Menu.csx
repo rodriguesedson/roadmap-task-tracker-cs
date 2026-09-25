@@ -25,7 +25,7 @@ public class Menu
                 _taskService.MarkInProgress(input);
                 break;
             case "mark-done":
-                Console.WriteLine("Work in progress");
+                _taskService.MarkDone(input);
                 break;
             case "list":
                 Console.WriteLine("Work in progress");
