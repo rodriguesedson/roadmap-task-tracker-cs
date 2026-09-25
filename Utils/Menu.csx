@@ -22,10 +22,10 @@ public class Menu
                 _taskService.Delete(input);
                 break;
             case "mark-in-progress":
-                Console.WriteLine("Work in progress");
+                _taskService.MarkInProgress(input);
                 break;
             case "mark-done":
-                Console.WriteLine("Work in progress");
+                _taskService.MarkDone(input);
                 break;
             case "list":
                 Console.WriteLine("Work in progress");

@@ -1,13 +1,14 @@
 using System.Text.Json.Serialization;
+using System.ComponentModel;
 
 public enum Status
 {
-    [JsonPropertyName("todo")]
+    [Description("todo")]
     TODO,
-    [JsonPropertyName("in-progress")]
+    [Description("in-progress")]
     IN_PROGRESS,
-    [JsonPropertyName("done")]
+    [Description("done")]
     DONE,
-    [JsonPropertyName("deleted")]
+    [Description("deleted")]
     DELETED
 }
