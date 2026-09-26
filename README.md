@@ -24,7 +24,7 @@ Task Tracker CLI project for [roadmap.sh](https://roadmap.sh/projects/task-track
 - mark-done 1 ✅
 
 ### 5 Listing all tasks
-- list ❌
+- list ✅
 
 ### 6 Listing tasks by status
 - list todo ❌

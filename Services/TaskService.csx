@@ -1,6 +1,9 @@
 #load "../Repositories/TaskRepository.csx"
 #load "../Utils/InputHandler.csx"
 #load "../Entities/DataRegistry.csx"
+#load "../Utils/EnumExtension.csx"
+
+using System.Collections.Generic;
 
 public class TaskService
 {
@@ -86,6 +89,18 @@ public class TaskService
         catch (Exception exception)
         {
             Console.WriteLine(exception.Message);
+        }
+    }
+
+    public void ListAll()
+    {
+        var data = _repository.GetData();
+        foreach (var task in data.TaskList)
+        {
+            var visualization = $"Id: {task.Id} - Status: {EnumExtension.GetDescription(task.Status)}\n" +
+                $"Description: {task.Description}\n" + 
+                $"CreatedAt: {task.CreatedAt} - UpdatedAt: {task.UpdatedAt}\n";
+            Console.WriteLine(visualization);
         }
     }
 
