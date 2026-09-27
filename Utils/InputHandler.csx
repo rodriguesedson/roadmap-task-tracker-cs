@@ -13,6 +13,14 @@ public static class InputHandler
             {
                 return $"{command} {secondCommand}";
             }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("Wrong secondary list command. Printing all tasks...\n");
+                Console.ResetColor();
+                
+                return command;
+            }
         }
 
         return command;
