@@ -28,16 +28,16 @@ public class Menu
                 _taskService.MarkDone(input);
                 break;
             case "list":
-                _taskService.ListAll();
+                _taskService.ListTasks();
                 break;
             case "list done":
-                Console.WriteLine("Work in progress");
+                _taskService.ListTasks(Status.DONE);
                 break;
             case "list todo":
-                Console.WriteLine("Work in progress");
+                _taskService.ListTasks(Status.TODO);
                 break;
             case "list in-progress":
-                Console.WriteLine("Work in progress");
+                _taskService.ListTasks(Status.IN_PROGRESS);
                 break;
             default:
                 Console.WriteLine("Invalid command");

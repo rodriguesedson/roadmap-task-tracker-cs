@@ -26,6 +26,8 @@ public class TaskService
             data.TaskCount += 1;
 
             _repository.SaveData(data);
+
+            Console.WriteLine($"Task added successfully (ID: {newId})");
         } 
         catch (Exception exception)
         {
@@ -92,9 +94,10 @@ public class TaskService
         }
     }
 
-    public void ListAll()
+    public void ListTasks(Status? status = null)
     {
         var data = _repository.GetData();
+        if (status is not null) data.TaskList = data.TaskList.Where(task => task.Status == status).ToList();
         foreach (var task in data.TaskList)
         {
             var visualization = $"Id: {task.Id} - Status: {EnumExtension.GetDescription(task.Status)}\n" +
